@@ -150,6 +150,7 @@ var conditions, actions, submit, serviceOptions;
           },
           {
             "label": "Email Content ID",
+            "hint" : "With Email Content ID :",
             "name": "email_template_id",
             "fieldType": "text"
           },
@@ -704,7 +705,7 @@ var conditions, actions, submit, serviceOptions;
       },
       { 
         "label": "With Valid Courier",
-        "name": "IsValidBIN",
+        "name": "IsValidCourier",
         "fields": [
            {
             "label": "list of",
