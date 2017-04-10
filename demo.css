@@ -64,6 +64,10 @@
   margin-right: 10px;
 }
 
+.action input text {
+  width: 10000px;
+}
+
 .action textarea {
   width: 250px;
 }

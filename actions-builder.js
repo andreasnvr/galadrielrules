@@ -196,6 +196,12 @@
           "id": id
         });
         div.append(area);
+      } else if (field.fieldType == "date") {
+        var input = $("<input>", {
+          "type": "date",
+          "name": field.name
+        });
+        div.append(input);
       }
 
       div.append(subfields);

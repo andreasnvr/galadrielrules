@@ -214,7 +214,104 @@ var conditions, actions, submit, serviceOptions;
             "fieldType": "text"
           }
         ]
-      }
+      },
+      {
+        "label": "Set Cashback Schedule",
+        "name": "tiki",
+         "fields": [
+          {
+            "label": "period",
+            "hint": "With Period of",
+            "fieldType" : "text",
+            "name": "jne"
+          },
+          {
+            "label": "Percentage",
+            "fieldType" : "text",
+            "hint": "With Percentage of",
+            "name": "tiki"
+          },
+          {
+            "label": "Count",
+            "fieldType" : "text",
+            "hint": "With Count of",
+            "name": "tiki"
+          }
+        ]
+      },
+      { 
+        "label": "Give Gold Merchant",
+        "name": "GiveGoldMerchant",
+        "fields": [
+          {
+            "label": "duration",
+            "hint": "with duration of ",
+            "name": "duration",
+            "fieldType": "text"
+          }
+        ]
+      },
+      {
+        "label": "Calculate Extra Amt",
+        "name": "CalculationExtraAmount",
+        "fields": [
+          {
+            "label": "from",
+            "hint": "with data type of",
+            "name": "data_type",
+            "validator": "data_type_id",
+            "fieldType": "select",
+            "options": [
+              {
+                "label": "Grand Total",
+                "name": "grand_total"
+              },
+              {
+                "label": "Recharge Price",
+                "name": "recharge_price"
+              }
+            ]
+          },
+          {
+            "hint": "with type of",
+            "name": "type",
+            "validator": "not_empty",
+            "fieldType": "select",
+            "options": [
+              {
+                "label": "percentage",
+                "name": "percentage",
+                "fields": [
+                  {
+                    "hint": "with max cap of",
+                    "name": "max_cap",
+                    "validator": "number_only",
+                    "fieldType": "text"
+                  },
+                  {
+                    "hint": "with percentage of",
+                    "validator": "custom_id",
+                    "name": "percentage",
+                    "fieldType": "text"
+                  }
+                ]
+              },
+              {
+                "label": "fixed amount",
+                "name": "direct",
+                "fields": [
+                  {
+                    "hint": "with amount of",
+                    "validator": "number_only",
+                    "name": "amount",
+                    "fieldType": "text"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
       ],
       data: []
     });
@@ -555,6 +652,7 @@ var conditions, actions, submit, serviceOptions;
           {
             "label": "of",
             "name": "count",
+            "hint": "of",
             "fieldType": "text"
           }
         ]
@@ -582,14 +680,15 @@ var conditions, actions, submit, serviceOptions;
           },
           {
             "label": "of",
+            "hint": "start from date",
             "name": "start from date",
-            "fieldType": "text"
+            "fieldType": "date"
           }
         ]
       },
       { 
         "label": "With Valid MarketPlace Shop",
-        "name": "IsValidBIN",
+        "name": "IsValidMarketPlaceShop",
         "fields": [
           {
             "hint": "from list of Shop :",
@@ -605,7 +704,7 @@ var conditions, actions, submit, serviceOptions;
       },
       { 
         "label": "With Valid Product",
-        "name": "IsValidBIN",
+        "name": "IsValidProduct",
         "fields": [
           {
             "hint": "from list of Product :",
@@ -626,7 +725,7 @@ var conditions, actions, submit, serviceOptions;
       },
       { 
         "label": "With Valid Similar user of",
-        "name": "IsValidBIN",
+        "name": "isValidSimilar",
         "fields": [
            {
             "label": "of",
@@ -650,34 +749,13 @@ var conditions, actions, submit, serviceOptions;
             ]
           },
           {
-            "hint": "with percentage of",
+            "hint": "with identifier of",
             "name": "identifier_list",
             "fieldType": "text"
           },
           {
             "hint": "identifier percentage",
             "name": "identifier_percentage",
-            "fieldType": "text"
-          }
-        ]
-      },
-      { 
-        "label": "Is Valid Pulsa Category",
-        "name": "IsValidPulsaCategory",
-        "fields": [
-          {
-            "hint": "from list of Category :",
-            "name": "cat_product",
-            "fieldType": "text"
-          },
-          {
-            "hint": "with Category name of",
-            "name": "cat_name_list",
-            "fieldType": "text"
-          },
-          {
-            "hint": "exclude category of",
-            "name": "cat_name_list",
             "fieldType": "text"
           }
         ]
@@ -754,7 +832,7 @@ var conditions, actions, submit, serviceOptions;
       },
       { 
         "label": "With included",
-        "name": "IsValidBIN",
+        "name": "isValidIncluded",
         "fields": [
            {
             "label": "list of datatype",
@@ -794,24 +872,7 @@ var conditions, actions, submit, serviceOptions;
                 "name": "tiki"
               }
             ]
-          },
-          {
-            "label": "can be mixed",
-            "hint": "and",
-            "name": "shipping_id",
-            "validator": "shipping_id",
-            "fieldType": "select",
-            "options": [
-              {
-                "label": "can be mixed",
-                "name": "jne"
-              },
-              {
-                "label": "cannot be mixed",
-                "name": "tiki"
-              }
-            ]
-          },
+          }
         ]
       },
       { 
@@ -897,30 +958,6 @@ var conditions, actions, submit, serviceOptions;
                 "name": "tiki"
               }
             ]
-          }
-        ]
-      },
-      {
-        "label": "Set Cashback Schedule",
-        "name": "tiki",
-         "fields": [
-          {
-            "label": "period",
-            "hint": "With Period of",
-            "fieldType" : "text",
-            "name": "jne"
-          },
-          {
-            "label": "Percentage",
-            "fieldType" : "text",
-            "hint": "With Percentage of",
-            "name": "tiki"
-          },
-          {
-            "label": "Count",
-            "fieldType" : "text",
-            "hint": "With Count of",
-            "name": "tiki"
           }
         ]
       }
